@@ -15,7 +15,7 @@ MODULENAME = Sistemaconfig</strong>
 Caso não saiba nada de como iniciar um módulo, declarar seu codepool, namespace, modulename... Deixei um tutorial bem fácil <a href="https://github.com/ElNogara/Primeiro-Modulo-Magento-1">Aqui</a> </br>
 
 Todo módulo Magento 1 que tem campos de configuração no admin da loja, deve obrigatoriamente conter um arquivo chamado <strong>system.xml</strong> dentro da pasta <strong>etc</strong> da sua raiz.
-Esse arquivo é responsável por receber todos os campos que ser criados no administrador, segue abaixo um exemplo bem explicado de como utilizar seus nós XML:
+Esse arquivo é responsável por receber todos os campos que devem ser criados no administrador, segue abaixo um exemplo bem explicado de como utilizar seus nós XML:
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <config> <!--Deve ser declarado.-->
