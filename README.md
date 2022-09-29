@@ -62,7 +62,7 @@ Esse arquivo é responsável por receber todos os campos que devem ser criados n
 </config>
 ```
 
-Se criado corretamente, ao acessar suas configurações no admin, através do caminho, Sistema -> Configurações, você já deve visualizar seus campos criados.
+Se criado corretamente, ao acessar suas configurações no admin, através do caminho, Sistema -> Configurações, você já deve visualizar seus novos fields.
 
 <img style="width: 500px;" src="https://user-images.githubusercontent.com/50090354/193133061-0f186503-04d0-48e9-9289-8d6fe2605c13.png" alt="Minha Figura">
 
