@@ -1,68 +1,69 @@
 <h1>Campo de configuração de módulo para Magento 1</h1>
 Nesse repositório estarei ensinando como criar um campo no admin da sua loja Magento 1 e como acessar seus valores salvos.<br>
 
-Dentro do seu módulo que já foi desenvolvido(caso não saiba como criar um módulo deixei um tutorial bem fácil nesse <a href="https://github.com/ElNogara/Primeiro-Modulo-Magento-1">link</a>) será necessário criar mais 2 arquivos, system.xml e o adminhtml.xml
+<h2>Primeiro vamos entender a estrutura de um campo no Magento 1?</h2>
+Todo campo criado no admin do Magento 1 deve seguir uma estrutura fixa para que sejá possível localiza-lo, primeiro a <strong>TAB</strong>, que é onde será inserida a sua <strong>SECTION</strong>, dentro da section vamos possuir <strong>GROUPS</strong> com todos os seus <strong>FIELDS</strong> dentro.
 
-A pasta etc do nosso módulo é responsável pelas configurações dele, como quais arquivos vão ser utilizados, rotas que serão criadas, dependências de outros módulos, campos que serão criados no admin da plataforma e por ai vai... Dentro do etc é obrigatório que seu módulo tenha o arquivo config.xml que é a onde você vai apontar esses campos utilizados. Abaixo um exemplo:
+Módulo que será desenvolvido terá:
+</br>
+<strong>CODEPOOL = local
+</br>
+NAMESPACE = Elnogara
+</br>
+MODULENAME = Sistemaconfig</strong>
+</br>
+Caso não saiba nada de como iniciar um módulo, declarar seu codepool, namespace, modulename... Deixei um tutorial bem fácil <a href="https://github.com/ElNogara/Primeiro-Modulo-Magento-1">Aqui</a> </br>
 
+Todo módulo Magento 1 que tem campos de configuração no admin da loja, deve obrigatoriamente conter um arquivo chamado <strong>system.xml</strong> dentro da pasta <strong>etc</strong> da sua raiz.
+Esse arquivo é responsável por receber todos os campos que seráo criados no administrador, segue abaixo um exemplo bem explicado de como utilizar seus nós XML:
 ```
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <Elnogara_FirstModule> <!--Nessa linha é importante reparar que eu inseri o namepace e o moduleName da mesma forma que eu criei as pastas, é MUITO importante que isso seja feito dessa forma, caso contrário o Magento não vai conseguir localizar o seu módulo Obs: a primeira letra sempre precisa ser maiuscula-->
-            <version>1.0.0</version> <!--Aqui é passado a versão do seu módulo, é muito utilizado quando vamos realizar alguma alteração no banco de dados da plataforma, pois o Magento identifica que a versão foi atualizada e recria ou executa as query's apontadas.-->
-        </Elnogara_FirstModule>
-    </modules>
+<?xml version="1.0" encoding="UTF-8"?>
+<config> <!--Deve ser declarado.-->
+    <tabs> <!--Será definido uma nova tab, não é obrigatório conter apenas se deseja criar uma nova tab no seus campos de administrador.-->
+        <nogaratab> <!--Deve dar um nome exclusivo para a sua tab, qualquer outro módulo que for utilizar a sua tab vai usar esse nome como referência para colocar as sections dentro.-->
+            <label>Campos Nogara TAB</label> <!--Esse label é o texto/título da sua tab.-->
+            <sort_order>1</sort_order> <!--Determina a ordenação da sua tab entre as outras.-->
+        </nogaratab>
+    </tabs>
+    <sections> <!--Aqui estamos criando a nossa section.-->
+        <nogarasection> <!--Como de costume também será necessário inserir um nome/rótulo para a sua section, porquê será necessário atribuir os campos a essa sections utilizando esse identificador.-->
+            <label>Titulo da Section</label> <!--Esse label é o texto/título da sua section.-->
+            <tab>nogaratab</tab> <!--Aqui é muito importante, pois é a parte aonde você vincula a sua section a uma tab... Estou vinculando a minha com a minha tab criada logo acima, MAS você poderia estar criando um campo que seria visível em alguma tab já existente do Magento, onde seria apenas necessário você pegar o nome dessa tab e inserir aqui, sua section já será exibida nela.-->
+            <!--Os campos abaixo determinam em quais níveis de permissão seus campos serão exibidos para configurar. (Caso não saiba o que isso significa, pode deixar tudo como 1 que vai funcionar perfeitamente.)-->
+            <show_in_default>1</show_in_default> <!--Valores de 1 ou 0 para SIM e NAO. Define se esses novos campos serão exibidos na visão Default de configuração.-->
+            <show_in_website>1</show_in_website> <!--Define se esses novos campos serão exibidos nas visões de website de configuração.-->
+            <show_in_store>1</show_in_store> <!--Define se esses campos serão exibidos para o nível de Store.-->
+            <groups> <!--Dentro da section é necessário definir grupos para estar alocando seus fields, que são seus campos.-->
+                <nogaragroup> <!--Também devem estar todos com um nome exclusivo.-->
+                    <label>Título do Grupo</label> <!--Esse label é o texto/título do seu grupo-->
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website> 
+                    <show_in_store>1</show_in_store> 
+                    <fields> <!--E aqui começa a criar os campos-->
+                        <nogaracampo1> <!--Cada campo terá seu nome para ser identificado pelo Magento-->
+                            <label>Titulo do campo 1</label> <!--Esse label é o texto/título do seu field.-->
+                            <frontend_type>text</frontend_type> <!--Essa configuração é muito importante para o seu campo, é aqui onde se determina se ele será um campo do tipo text, textarea, select, multiselect, password, time, image, allowspecific, import, export, label, obscure, entre outros. Nesse momento vamos criar um do tipo texto-->
+                            <comment>Campo para exibir titulo na home.</comment> <!--São comentarios para especificar o que esse field faz.-->
+                            <!--Caso você precise deixar o campo com um comentário mais elaborado, com um HTML diferente, basta inserir ele dentro de um CDATA, fica da seguinte forma... ![CDATA[TEXTO DO CAMPO COM HTML]]-->
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website> 
+                            <show_in_store>1</show_in_store> 
+                        </nogaracampo1>
+                        <nogaracampo2> <!--Criando meu segundo campo-->
+                            <label>Titulo do campo 2</label> <!--Esse label é o texto/título do seu field.-->
+                            <frontend_type>select</frontend_type> <!--VOu criar um SELECT para explicar como funciona ele-->
+                            <frontend_model>1<frontend_model> <!--Todo campo tipo SELECT ou MULTISELECT deve conter um frontend_model, que basicamente é uma classe que vai retornar para ele um array de opções, que serão as opções sugeridas para selecionar.-->
+                        </nogaracampo2>
+                    </fields>
+                </nogaragroup>
+            </groups>
+        </nogarasection>
+    </sections>
 </config>
 ```
 
-Acima é uma estrutura padrão de um config.xml, mas como no nosso módulo vai utilizar um controller será necessário declarar uma rota no nosso config. Então abaixo tem um exemplo com a rota sendo declarada.
+Se criado corretamente, ao acessar suas configurações no admin, através do caminho, Sistema -> Configurações, você já deve visualizar seus campos criados.
 
-```
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <Elnogara_FirstModule>
-            <version>1.0.0</version>
-        </Elnogara_FirstModule>
-    </modules> <!--Note que dessa vez possui campos a mais, sendo eles responsáveis por declarar a rota do controller-->
-    <frontend> <!--Aqui nós dissemos em que parte da plataforma estaremos criando algo, OU será no frontend que é responsável por desenvolver uma função para o frontend da sua loja OU será adminhtml que é responsável por desenvolver uma função para o admin da plataforma-->
-        <routers> <!--Aqui estamos dizendo que será criado uma rota para nossa plataforma -->
-            <nogara> <!--Aqui nós criamos um nó único, será um apelido para a sua nova rota-->
-                <use>standard</use> <!--Esse campo basicamente diz qual é o tipo de rota que será criado, isso vou estar tratando em outro tutorial, pois não é foco nesse momento, apenas tenham em mente que em quase todas as rotas criadas o standard será usado, muito raramente vai estar utilizando outro parâmetro aqui-->
-                <args> <!--Esse nó é responsável por passar argumentos para a sua rota, abaixo passei dois que são os mais importantes no meu ver, mas existem muitos outros que podem ser passados-->
-                    <module>Elnogara_FirstModule</module> <!--Um dos argumentos passados é qual módulo que vai utilizar essa rota-->
-                    <frontName>firstmodule</frontName> <!--E o outro argumento passado foi o frontName dessa rota, quando for ser acessada essa rota, qual frontName que vai ser chamado no caminho de url-->
-                </args>
-            </nogara>
-        </routers>
-    </frontend>
-</config>
-```
+<img style="width: 500px;" src="https://user-images.githubusercontent.com/50090354/193133061-0f186503-04d0-48e9-9289-8d6fe2605c13.png" alt="Minha Figura">
 
-Além de declarar o controller dentro do nosso config também é importante criarmos o mesmo, então com isso em mente dentro da pasta principal do módulo(MODULENAME) vamos criar a pasta _controllers_ que é a pasta responsável por armazenar todos os controllers do módulo e será aonde vamos criar o nosso _TestController.php_ que é o nosso controller. Abaixo um exemplo do controller:
-
-```
-<?php
-
-class Elnogara_FirstModule_TestController extends Mage_Core_Controller_Front_Action <!--A nomeclatura da classe deve seguir esse padrão sempre que é o nome das pastas que o controller está dentro, e depois o nome do controller. Além disso para que o controller frontend funcione corretamente é necessário que ele extenda a classe Mage_Core_Controller_Front_Action-->
-{
-    public function testAction() <!--Aqui estamos declarando uma action para o nosso controller, muita atenção nela pois também será passada na nossa URL-->
-    {
-?>
-        <h1>Hello World</h1>
-        <h5>Seu primeiro módulo em Magento 1</h5>
-<?php
-
-    }
-}
-?>
-```
-
-Se olhar com atenção no exemplo acima, você percebe que tanto o Controller quanto a Action possuem seu nome e também o que são no próprio nome, ou seja o nome do nosso Controller é TestController.php e a Action é testAction(), é extremamente importante que os dois tenham isso para que o magento entenda o que são.
-
-Agora que tudo foi criado é preciso entender como vamos chamar essa rota corretamente que acabamos de desenvolver. Para acessar um controller é necessário passar seu <strong>FrontName</strong>/<strong>Nome do controller</strong>/<strong>Action que será chamada</strong>... Nós já declaramos tudo isso, o frontname foi declarado lá no nosso config.xml quando criamos a rota, o nosso Controller foi passado no momento que criamos o TestController.php com o nome de _Test_ sendo o nome do controller e a Action é a função que será chamada dentro do Controller que nós definimos como TestAction(), sendo assim a nossa rota para executarmos o código dentro da action test será:
-
-`
-https://DOMINIO-DA-SUA-LOJA/firstmodule/test/test
-`
+Qual dúvida estou a disposição.
