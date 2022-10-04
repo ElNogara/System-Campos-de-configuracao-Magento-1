@@ -75,7 +75,12 @@ Mage::getStoreConfig('<SECTION>/<GROUP>/<FIELD>'); //Dessa forma é possível ac
 Mage::getStoreConfig('nogarasection/nogaragroup/nogaracampo1') //Exemplo de como pegar os valores do primeiro campo que criamos.
 ```
 
-Esses campos criados no admin servem apenas para usuários que utilizem uma conta administrador no sistema, caso exista a necessidade de que esses campos sejam vísiveis para permissões diferentes de usuários dentro do painel, é necessário criar uma rota de ACL para eles, saiba como fazer isso através desse <a href="https://github.com/ElNogara/ACL-System-Campos-Magento-1">repositório</a>
+Esses campos criados no admin servem apenas para usuários que utilizem uma conta administrador no sistema, caso exista a necessidade de que esses campos sejam vísiveis para permissões diferentes de usuários dentro do painel, é necessário criar uma rota de ACL para eles, saiba como fazer isso através desse <a href="https://github.com/ElNogara/ACL-System-Campos-Magento-1">repositório</a>.
 
+<h2>Erro 404</h2>
+Existem duas formas de resolver isso:
+
+1° - Por motivos de segurança no Magento 1, sempre que é criado uma nova section ele exige que sejá feito o login novamente para ter permissão de acessar ela, então basta deslogar e logar novamente que vai conseguir visualizar seu campo.
+2° - Caso mesmo logando novamente não consiga será necessário criar o ACL da sua seção, aprenda isso nesse <a href="https://github.com/ElNogara/ACL-System-Campos-Magento-1">repositório</a>.
 
 Qualquer dúvida estou a disposição.
