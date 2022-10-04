@@ -66,4 +66,7 @@ Se criado corretamente, ao acessar suas configurações no admin, através do ca
 
 <img style="width: 500px;" src="https://user-images.githubusercontent.com/50090354/193133061-0f186503-04d0-48e9-9289-8d6fe2605c13.png" alt="Minha Figura">
 
-Qual dúvida estou a disposição.
+Esses campos criados no admin servem apenas para usuários que utilizem uma conta administrador no sistema, caso exista a necessidade de que esses campos sejam vísiveis para permissões diferentes de usuários dentro do painel, é necessário criar uma rota de ACL para eles, saiba como fazer isso através desse <a href="https://github.com/ElNogara/ACL-System-Campos-Magento-1">repositório</a>
+
+
+Qualquer dúvida estou a disposição.
