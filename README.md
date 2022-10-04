@@ -66,6 +66,15 @@ Se criado corretamente, ao acessar suas configurações no admin, através do ca
 
 <img style="width: 500px;" src="https://user-images.githubusercontent.com/50090354/193133061-0f186503-04d0-48e9-9289-8d6fe2605c13.png" alt="Minha Figura">
 
+<h2>Como acessar esses campos por código?</h2>
+Caso você precise pegar esses valores inseridos pelos usuários através do código, para fazer alguma tratativa nos seus módulos ou condições, é bem simples... Basta ter em mente o nome da sua <strong>SECTION</strong>, <strong>GROUPS</strong> e <strong>FIELDS</strong> do seu campo, pois como disse anteriormente, esses nomes ÚNICOS são basicamente a 'rota' que o Magento usa para identificar esse campo, então utilize o código:
+
+```
+Mage::getStoreConfig('<SECTION>/<GROUP>/<FIELD>'); //Dessa forma é possível acessar qualquer valor de campos no Magento 1, basta passar seus respectivos nomes de seções, grupos e campos, por isso devem ser nomes únicos na hora de declarar.
+
+Mage::getStoreConfig('')
+```
+
 Esses campos criados no admin servem apenas para usuários que utilizem uma conta administrador no sistema, caso exista a necessidade de que esses campos sejam vísiveis para permissões diferentes de usuários dentro do painel, é necessário criar uma rota de ACL para eles, saiba como fazer isso através desse <a href="https://github.com/ElNogara/ACL-System-Campos-Magento-1">repositório</a>
 
 
