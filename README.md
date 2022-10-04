@@ -72,7 +72,7 @@ Caso você precise pegar esses valores inseridos pelos usuários através do có
 ```
 Mage::getStoreConfig('<SECTION>/<GROUP>/<FIELD>'); //Dessa forma é possível acessar qualquer valor de campos no Magento 1, basta passar seus respectivos nomes de seções, grupos e campos, por isso devem ser nomes únicos na hora de declarar.
 
-Mage::getStoreConfig('')
+Mage::getStoreConfig('nogarasection/nogaragroup/nogaracampo1') //Exemplo de como pegar os valores do primeiro campo que criamos.
 ```
 
 Esses campos criados no admin servem apenas para usuários que utilizem uma conta administrador no sistema, caso exista a necessidade de que esses campos sejam vísiveis para permissões diferentes de usuários dentro do painel, é necessário criar uma rota de ACL para eles, saiba como fazer isso através desse <a href="https://github.com/ElNogara/ACL-System-Campos-Magento-1">repositório</a>
