@@ -51,8 +51,12 @@ Esse arquivo é responsável por receber todos os campos que devem ser criados n
                         </nogaracampo1>
                         <nogaracampo2> <!--Criando meu segundo campo-->
                             <label>Titulo do campo 2</label> <!--Esse label é o texto/título do seu field.-->
-                            <frontend_type>select</frontend_type> <!--VOu criar um SELECT para explicar como funciona ele-->
-                            <frontend_model>1<frontend_model> <!--Todo campo tipo SELECT ou MULTISELECT deve conter um frontend_model, que basicamente é uma classe que vai retornar para ele um array de opções, que serão as opções sugeridas para selecionar.-->
+                            <frontend_type>select</frontend_type> <!--Vou criar um SELECT para explicar como funciona ele-->
+                            <source_model>adminhtml/system_config_source_yesno</source_model> <!--Será a lógica usada para inserir os valores dentro do SELECT, deve ser um model adminhtml que retorne um array com valores.-->
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website> 
+                            <show_in_store>1</show_in_store> 
                         </nogaracampo2>
                     </fields>
                 </nogaragroup>
@@ -77,10 +81,13 @@ Mage::getStoreConfig('nogarasection/nogaragroup/nogaracampo1') //Exemplo de como
 
 Esses campos criados no admin servem apenas para usuários que utilizem uma conta administrador no sistema, caso exista a necessidade de que esses campos sejam vísiveis para permissões diferentes de usuários dentro do painel, é necessário criar uma rota de ACL para eles, saiba como fazer isso através desse <a href="https://github.com/ElNogara/ACL-System-Campos-Magento-1">repositório</a>.
 
+<h2>Source Model</h2>
+Alguns campos como SELECT, MULTSELECT e outros... Dependem de um model para retornar o array que popula seus valores, se preferir aprender mais sobre o assunto e também como criar seus próprios Sources Models, deixei esse <a href="https://github.com/ElNogara/Source-Model-para-Magento-1">repositório</a> para isso.
+
 <h2>Erro 404</h2>
 Existem duas formas de resolver isso:
 
 1° - Por motivos de segurança no Magento 1, sempre que é criado uma nova section ele exige que sejá feito o login novamente para ter permissão de acessar ela, então basta deslogar e logar novamente que vai conseguir visualizar seu campo.</br>
 2° - Caso mesmo logando novamente não consiga, será necessário criar o ACL da sua seção, aprenda isso nesse <a href="https://github.com/ElNogara/ACL-System-Campos-Magento-1">repositório</a>.
 
-Qualquer dúvida estou a disposição.
+<a href="https://www.linkedin.com/in/wellington-nogara-921a27165/" style="color: red;">Qualquer dúvida estou a disposição.</a>
