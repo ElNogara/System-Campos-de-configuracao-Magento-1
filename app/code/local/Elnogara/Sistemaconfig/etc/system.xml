@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config> <!--Deve ser declarado.-->
+    <tabs> <!--Será definido uma nova tab, não é obrigatório conter apenas se deseja criar uma nova tab no seus campos de administrador.-->
+        <nogaratab> <!--Deve dar um nome exclusivo para a sua tab, qualquer outro módulo que for utilizar a sua tab vai usar esse nome como referência para colocar as sections dentro.-->
+            <label>Campos Nogara TAB</label> <!--Esse label é o texto/título da sua tab.-->
+            <sort_order>1</sort_order> <!--Determina a ordenação da sua tab entre as outras.-->
+        </nogaratab>
+    </tabs>
+    <sections> <!--Aqui estamos criando a nossa section.-->
+        <nogarasection> <!--Como de costume também será necessário inserir um nome/rótulo para a sua section, porquê será necessário atribuir os campos a essa sections utilizando esse identificador.-->
+            <label>Titulo da Section</label> <!--Esse label é o texto/título da sua section.-->
+            <tab>nogaratab</tab> <!--Aqui é muito importante, pois é a parte aonde você vincula a sua section a uma tab... Estou vinculando a minha com a minha tab criada logo acima, MAS você poderia estar criando um campo que seria visível em alguma tab já existente do Magento, onde seria apenas necessário você pegar o nome dessa tab e inserir aqui, sua section já será exibida nela.-->
+            <!--Os campos abaixo determinam em quais níveis de permissão seus campos serão exibidos para configurar. (Caso não saiba o que isso significa, pode deixar tudo como 1 que vai funcionar perfeitamente.)-->
+            <show_in_default>1</show_in_default> <!--Valores de 1 ou 0 para SIM e NAO. Define se esses novos campos serão exibidos na visão Default de configuração.-->
+            <show_in_website>1</show_in_website> <!--Define se esses novos campos serão exibidos nas visões de website de configuração.-->
+            <show_in_store>1</show_in_store> <!--Define se esses campos serão exibidos para o nível de Store.-->
+            <groups> <!--Dentro da section é necessário definir grupos para estar alocando seus fields, que são seus campos.-->
+                <nogaragroup> <!--Também devem estar todos com um nome exclusivo.-->
+                    <label>Título do Grupo</label> <!--Esse label é o texto/título do seu grupo-->
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website> 
+                    <show_in_store>1</show_in_store> 
+                    <fields> <!--E aqui começa a criar os campos-->
+                        <nogaracampo1> <!--Cada campo terá seu nome para ser identificado pelo Magento-->
+                            <label>Titulo do campo 1</label> <!--Esse label é o texto/título do seu field.-->
+                            <frontend_type>text</frontend_type> <!--Essa configuração é muito importante para o seu campo, é aqui onde se determina se ele será um campo do tipo text, textarea, select, multiselect, password, time, image, allowspecific, import, export, label, obscure, entre outros. Nesse momento vamos criar um do tipo texto-->
+                            <comment>Campo para exibir titulo na home.</comment> <!--São comentarios para especificar o que esse field faz.-->
+                            <!--Caso você precise deixar o campo com um comentário mais elaborado, com um HTML diferente, basta inserir ele dentro de um CDATA, fica da seguinte forma... ![CDATA[TEXTO DO CAMPO COM HTML]]-->
+                            <sort_order>1</sort_order> <!--Define a ordem dos campos dentro do grupo-->
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website> 
+                            <show_in_store>1</show_in_store> 
+                        </nogaracampo1>
+                        <nogaracampo2> <!--Criando meu segundo campo-->
+                            <label>Titulo do campo 2</label> <!--Esse label é o texto/título do seu field.-->
+                            <frontend_type>select</frontend_type> <!--Vou criar um SELECT para explicar como funciona ele-->
+                            <source_model>adminhtml/system_config_source_yesno</source_model> <!--Será a lógica usada para inserir os valores dentro do SELECT, deve ser um model adminhtml que retorne um array com valores.-->
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website> 
+                            <show_in_store>1</show_in_store> 
+                        </nogaracampo2>
+                    </fields>
+                </nogaragroup>
+            </groups>
+        </nogarasection>
+    </sections>
+</config>
