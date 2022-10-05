@@ -1,8 +1,10 @@
 <h1>Campo de configuração de módulo para Magento 1</h1>
 Nesse repositório estarei ensinando como criar um campo no admin da sua loja Magento 1 e como acessar seus valores salvos.<br>
 
-<h2>Primeiro vamos entender a estrutura de um campo no Magento 1?</h2>
+<h4>Primeiro vamos entender a estrutura de um campo no Magento 1?</h4>
 Todo campo criado no admin do Magento 1 deve seguir uma estrutura fixa para que sejá possível localiza-lo, primeiro a <strong>TAB</strong>, que é onde será inserida a sua <strong>SECTION</strong>, dentro da section vamos possuir <strong>GROUPS</strong> com todos os seus <strong>FIELDS</strong> dentro.
+
+<h3>Vamos começar!</h3>
 
 Módulo que será desenvolvido terá:
 </br>
