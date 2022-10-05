@@ -84,7 +84,7 @@ Mage::getStoreConfig('nogarasection/nogaragroup/nogaracampo1') //Exemplo de como
 Esses campos criados no admin servem apenas para usuários que utilizem uma conta administrador no sistema, caso exista a necessidade de que esses campos sejam vísiveis para permissões diferentes de usuários dentro do painel, é necessário criar uma rota de ACL para eles, saiba como fazer isso através desse <a href="https://github.com/ElNogara/ACL-System-Campos-Magento-1">repositório</a>.
 
 <h2>Source Model</h2>
-Alguns campos como SELECT, MULTSELECT e outros... Dependem de um model para retornar o array que popula seus valores, se preferir aprender mais sobre o assunto e também como criar seus próprios Sources Models, deixei esse <a href="https://github.com/ElNogara/Source-Model-para-Magento-1">repositório</a> para isso.
+Alguns campos como SELECT, MULTISELECT e outros... Dependem de um model para retornar o array que popula seus valores, se preferir aprender mais sobre o assunto e também como criar seus próprios Sources Models, deixei esse <a href="https://github.com/ElNogara/Source-Model-para-Magento-1">repositório</a> para isso.
 
 <h2>Erro 404</h2>
 Existem duas formas de resolver isso:
