@@ -92,4 +92,4 @@ Existem duas formas de resolver isso:
 1° - Por motivos de segurança no Magento 1, sempre que é criado uma nova section ele exige que sejá feito o login novamente para ter permissão de acessar ela, então basta deslogar e logar novamente que vai conseguir visualizar seu campo.</br>
 2° - Caso mesmo logando novamente não consiga, será necessário criar o ACL da sua seção, aprenda isso nesse <a href="https://github.com/ElNogara/ACL-System-Campos-Magento-1">repositório</a>.
 
-<strong>Qualquer dúvida estou a disposição - <a href="https://wellingtonnogara.com/" style="color: red;">Wellington Nogara</a>.</strong>
+<strong>Espero muito ter ajudado. Mas qualquer dúvida estou a disposição - <a href="https://wellingtonnogara.com/" style="color: red;">Wellington Nogara</a>.</strong>
